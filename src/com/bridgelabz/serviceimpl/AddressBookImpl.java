@@ -74,4 +74,24 @@ public class AddressBookImpl implements AddressBook {
             editContact();
         }
     }
+
+    /**
+     * UseCase4 Deleting Existing Contact Person Using their name
+     */
+    @Override
+    public void deleteContact() {
+        System.out.println("============= Deleting Details ================");
+        System.out.println("Enter First Name Of Person : ");
+        String firstName = scanner.nextLine();
+        if (firstName.equals(contact.getFirstName())) {
+            System.out.println("You are deleted : " + contact.getFirstName());
+            contact = null;
+        } else {
+            System.out.println();
+            System.out.println("Invalid Name......!");
+            System.out.println("Please enter valid First Name.");
+            deleteContact();
+
+        }
+    }
 }
