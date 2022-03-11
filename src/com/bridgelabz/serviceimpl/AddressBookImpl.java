@@ -3,6 +3,8 @@ package com.bridgelabz.serviceimpl;
 import com.bridgelabz.model.Contacts;
 import com.bridgelabz.service.AddressBook;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AddressBookImpl implements AddressBook {
@@ -10,11 +12,10 @@ public class AddressBookImpl implements AddressBook {
     Contacts contact;
     Scanner scanner = new Scanner(System.in);
 
-    /**
-     * UseCase2 Adding new Contact to Address Book System
-     */
+    List<Contacts> contactsList = new ArrayList<>();
+
     @Override
-    public void add() {
+    public void add(Contacts contact) {
         contact = new Contacts();
 
         System.out.println("Enter First Name : ");
@@ -45,16 +46,20 @@ public class AddressBookImpl implements AddressBook {
         contact.setPhoneNumber(phoneNumber);
         contact.setEmail(email);
 
-        System.out.println(" ==================== Details ===================");
 
-        System.out.println(" First Name : " + contact.getFirstName());
-        System.out.println(" Last Name : " + contact.getLastName());
-        System.out.println(" Address : " + contact.getAddress());
-        System.out.println(" City : " + contact.getCity());
-        System.out.println(" State : " + contact.getState());
-        System.out.println(" Zip Code : " + contact.getZipCode());
-        System.out.println(" Phone Number : " + contact.getPhoneNumber());
-        System.out.println(" Email : " + contact.getEmail());
+        contactsList.add(contact);
+        for (Contacts contacts : contactsList) {
+            System.out.println(" ==================== Details ===================");
+
+            System.out.println(" First Name : " + contacts.getFirstName());
+            System.out.println(" Last Name : " + contacts.getLastName());
+            System.out.println(" Address : " + contacts.getAddress());
+            System.out.println(" City : " + contacts.getCity());
+            System.out.println(" State : " + contacts.getState());
+            System.out.println(" Zip Code : " + contacts.getZipCode());
+            System.out.println(" Phone Number : " + contacts.getPhoneNumber());
+            System.out.println(" Email : " + contacts.getEmail());
+        }
     }
 
     /**
@@ -66,7 +71,7 @@ public class AddressBookImpl implements AddressBook {
         System.out.println("Enter First Name Of Person : ");
         String editName = scanner.nextLine();
         if (editName.equalsIgnoreCase(contact.getFirstName())) {
-            add();
+            add(contact);
         } else {
             System.out.println();
             System.out.println("Invalid Name......!");
