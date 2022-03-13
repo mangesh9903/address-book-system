@@ -1,5 +1,7 @@
 package com.bridgelabz.model;
 
+import java.util.Objects;
+
 public class Contacts {
 
     private String firstName;
@@ -13,6 +15,17 @@ public class Contacts {
 
     public Contacts() {
 
+    }
+
+    public Contacts(String firstName, String lastName, String address, String city, String state, long zipCode, long phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -77,6 +90,19 @@ public class Contacts {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contacts contacts = (Contacts) o;
+        return zipCode == contacts.zipCode && phoneNumber == contacts.phoneNumber && Objects.equals(firstName, contacts.firstName) && Objects.equals(lastName, contacts.lastName) && Objects.equals(address, contacts.address) && Objects.equals(city, contacts.city) && Objects.equals(state, contacts.state) && Objects.equals(email, contacts.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
     }
 
     @Override
