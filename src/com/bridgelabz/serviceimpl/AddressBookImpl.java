@@ -3,20 +3,16 @@ package com.bridgelabz.serviceimpl;
 import com.bridgelabz.model.Contacts;
 import com.bridgelabz.service.AddressBook;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookImpl implements AddressBook {
 
     Scanner scanner = new Scanner(System.in);
 
-    List<Contacts> contactsList = new ArrayList<>();
+    Set<Contacts> contactsSet = new HashSet<>();
 
     @Override
-    public List<Contacts> add(Contacts contact) {
-
+    public Set<Contacts> add(Contacts contact) {
         System.out.println("Enter First Name : ");
         String firstName = scanner.nextLine();
         System.out.println("Enter Last Name : ");
@@ -36,8 +32,9 @@ public class AddressBookImpl implements AddressBook {
         System.out.println("Enter your Email : ");
         String email = scanner.nextLine();
 
-        contactsList.add(new Contacts(firstName, lastName, address, city, state, zipCode, phoneNumber, email));
-        for (Contacts contacts : contactsList) {
+        contactsSet.add(new Contacts(firstName, lastName, address, city, state, zipCode, phoneNumber, email));
+
+        for (Contacts contacts : contactsSet) {
             System.out.println(" ==================== Details ===================");
 
             System.out.println(" First Name : " + contacts.getFirstName());
@@ -49,21 +46,17 @@ public class AddressBookImpl implements AddressBook {
             System.out.println(" Phone Number : " + contacts.getPhoneNumber());
             System.out.println(" Email : " + contacts.getEmail());
         }
-        return contactsList;
+        return contactsSet;
     }
 
-    /**
-     * UseCase3 Update/Edit Existing Contact Person Using their name
-     *
-     * @return
-     */
+
     @Override
-    public void editContact(List<Contacts> contactsList) {
+    public void editContact(Set<Contacts> contactsSet) {
         System.out.println("============= Updating Details ================");
         System.out.println("Enter First Name Of Person : ");
         Scanner scanner = new Scanner(System.in);
         String editName = scanner.nextLine();
-        for (Contacts contact : contactsList) {
+        for (Contacts contact : contactsSet) {
             if (editName.equals(contact.getFirstName())) {
                 System.out.println("Enter First Name List : ");
                 String firstName = scanner.nextLine();
@@ -97,18 +90,15 @@ public class AddressBookImpl implements AddressBook {
 
     }
 
-    /**
-     * UseCase4 Deleting Existing Contact Person Using their name
-     */
+
     @Override
-    public void deleteContact(List<Contacts> contactsList) {
+    public void deleteContact(Set<Contacts> contactsSet) {
         System.out.println("============= Deleting Details ================");
         System.out.println("Enter First Name Of Person : ");
         String firstName = scanner.nextLine();
-        for (int index = 0; index < contactsList.size(); index++) {
-            Contacts contact = contactsList.get(index);
+        for (Contacts contact : contactsSet) {
             if (firstName.equals(contact.getFirstName())) {
-                contactsList.remove(contact);
+                contactsSet.remove(contact);
             }
         }
     }

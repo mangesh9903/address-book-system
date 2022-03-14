@@ -4,9 +4,7 @@ import com.bridgelabz.model.Contacts;
 import com.bridgelabz.service.AddressBook;
 import com.bridgelabz.serviceimpl.AddressBookImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookMain {
 
@@ -14,45 +12,53 @@ public class AddressBookMain {
         System.out.println("Welcome to Address Book Program.");
         AddressBook addressBook = new AddressBookImpl();
         Contacts contact = new Contacts();
-        List<Contacts> contactsList = new ArrayList<>();
+        Set<Contacts> contactsSet = new HashSet<>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
                 System.out.println("1. Enter to Add contact.");
                 System.out.println("2. Enter to Edit Existing Details.");
                 System.out.println("3. Enter to Delete Details.");
-                System.out.println("4. Enter to Exit from Address Book Program.");
+                System.out.println("4. Enter to  Display All Contacts.");
+                System.out.println("5. Enter to Exit from Address Book Program.");
                 int ch = scanner.nextInt();
 
                 switch (ch) {
                     case 1:
-                        contactsList = addressBook.add(contact);
+                        contactsSet = addressBook.add(contact);
                         break;
                     case 2:
                         System.out.println("========================================================== Contact List =======================================================");
-                        for (Contacts contacts : contactsList) {
+                        for (Contacts contacts : contactsSet) {
                             System.out.println(contacts);
                         }
-                        addressBook.editContact(contactsList);
+                        addressBook.editContact(contactsSet);
                         System.out.println("======================================================== Updated Contact List ==================================================");
-                        for (Contacts contacts : contactsList) {
+                        for (Contacts contacts : contactsSet) {
                             System.out.println(contacts);
                         }
                         System.out.println();
                         break;
                     case 3:
                         System.out.println("=========================================================== Contact List  ======================================================");
-                        for (Contacts contacts : contactsList) {
+                        for (Contacts contacts : contactsSet) {
                             System.out.println(contacts);
                         }
-                        addressBook.deleteContact(contactsList);
+                        addressBook.deleteContact(contactsSet);
                         System.out.println("==================================================== After Deletion Contact List ================================================");
-                        for (Contacts contacts : contactsList) {
+                        for (Contacts contacts : contactsSet) {
                             System.out.println(contacts);
                         }
                         System.out.println();
                         break;
                     case 4:
+                        System.out.println("=========================================================== Contact List  ======================================================");
+                        for (Contacts contacts : contactsSet) {
+                            System.out.println(contacts);
+                        }
+                        System.out.println("================================================================================================================");
+                        break;
+                    case 5:
                         System.out.println("You are exit from Address Book Program!!!");
                         System.exit(0);
                     default:
