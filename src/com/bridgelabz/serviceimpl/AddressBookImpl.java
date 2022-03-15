@@ -56,9 +56,10 @@ public class AddressBookImpl implements AddressBook {
         System.out.println("Enter First Name Of Person : ");
         Scanner scanner = new Scanner(System.in);
         String editName = scanner.nextLine();
+        System.out.println("Please Enter Below Details For Updation");
         for (Contacts contact : contactsSet) {
             if (editName.equals(contact.getFirstName())) {
-                System.out.println("Enter First Name List : ");
+                System.out.println("Enter First Name : ");
                 String firstName = scanner.nextLine();
                 System.out.println("Enter Last Name : ");
                 String lastName = scanner.nextLine();
@@ -96,10 +97,12 @@ public class AddressBookImpl implements AddressBook {
         System.out.println("============= Deleting Details ================");
         System.out.println("Enter First Name Of Person : ");
         String firstName = scanner.nextLine();
+        Contacts dummycontact = new Contacts();
         for (Contacts contact : contactsSet) {
             if (firstName.equals(contact.getFirstName())) {
-                contactsSet.remove(contact);
+                dummycontact = contact;
             }
         }
+        contactsSet.remove(dummycontact);
     }
 }
