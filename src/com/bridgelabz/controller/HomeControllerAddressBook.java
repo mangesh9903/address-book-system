@@ -29,7 +29,9 @@ public class HomeControllerAddressBook {
                 System.out.println("3. Enter to Delete Details.");
                 System.out.println("4. Enter to  Display All Contacts.");
                 System.out.println("5. Search Contact Details by Name");
-                System.out.println("6. Enter to Exit from Address Book Program.");
+                System.out.println("6. Search Contact Details by City");
+                System.out.println("7. Search Contact Details by State");
+                System.out.println("8. Enter to Exit from Address Book Program.");
                 int ch = scanner.nextInt();
 
                 switch (ch) {
@@ -87,6 +89,31 @@ public class HomeControllerAddressBook {
                                 "======================================================");
                         break;
                     case 6:
+                        System.out.println("Enter City Name:");
+                         String cityName = scanner.next();
+                        System.out.println("=========================================================== Contact List " +
+                                " ======================================================");
+                        contactList = addressBook.searchByCity(cityName);
+                        for (Contact contacts : contactList) {
+                            System.out.println(contacts);
+                        }
+                        System.out.println("===========================================================" +
+                                "======================================================");
+                        break;
+                    case 7:
+                        System.out.println("Enter State Name:");
+                        String stateName = scanner.next();
+                        System.out.println("=========================================================== Contact List " +
+                                " ======================================================");
+                        contactList = addressBook.searchByState(stateName);
+                        for (Contact contacts : contactList) {
+                            System.out.println(contacts);
+                        }
+                        System.out.println("===========================================================" +
+                                "======================================================");
+                        break;
+
+                    case 8:
                         System.out.println("You are exit from Address Book Program!!!");
                         System.exit(0);
                     default:

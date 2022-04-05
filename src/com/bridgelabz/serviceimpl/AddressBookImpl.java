@@ -139,4 +139,24 @@ public class AddressBookImpl implements AddressBook {
         //stream and lambda for find filter given name from arraylist
         return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name)).collect(Collectors.toList());
     }
+
+    /**
+     * Method : for search contact City Name
+     *
+     * @param city passing city name to be search
+     * @return It return searched list of contacts details
+     */
+    public List<Contact> searchByCity(String city) {
+        return contactList.stream().filter(person -> person.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
+    }
+
+    /**
+     * Method : for search contact State Name
+     *
+     * @param state passing state name to be search
+     * @return It return searched list of contacts details
+     */
+    public List<Contact> searchByState(String state) {
+        return contactList.stream().filter(person -> person.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
+    }
 }

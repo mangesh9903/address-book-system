@@ -22,4 +22,8 @@ public interface AddressBook {
 
     List<Contact> searchByName(String name);
 
+    List<Contact> searchByCity(String city);
+
+    List<Contact> searchByState(String state);
+
 }
