@@ -1,15 +1,25 @@
 package com.bridgelabz.service;
 
-import com.bridgelabz.model.Contacts;
+import com.bridgelabz.model.Contact;
 
 import java.util.List;
-import java.util.Set;
+
+/*********************************************************************
+ * Purpose: Interface for Address Book .
+ *
+ * @author Mangesh Bhujang
+ * @version 1.0
+ * @since 05-03-2022
+ *
+ **********************************************************************/
 
 public interface AddressBook {
-    Set<Contacts> add(Contacts contact);
+    List<Contact> add(Contact contact);
 
-    void editContact(Set<Contacts> contact);
+    void editContact(List<Contact> contact);
 
-    void deleteContact(Set<Contacts> contact);
+    void deleteContact(List<Contact> contact);
+
+    List<Contact> searchByName(String name);
 
 }

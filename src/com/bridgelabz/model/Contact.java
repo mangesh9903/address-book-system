@@ -2,7 +2,15 @@ package com.bridgelabz.model;
 
 import java.util.Objects;
 
-public class Contacts {
+/*********************************************************************
+ * Purpose: POJO Class.
+ *
+ * @author Mangesh Bhujang
+ * @version 1.0
+ * @since 05-03-2022
+ *
+ **********************************************************************/
+public class Contact {
 
     private String firstName;
     private String lastName;
@@ -13,11 +21,11 @@ public class Contacts {
     private long phoneNumber;
     private String email;
 
-    public Contacts() {
+    public Contact() {
 
     }
 
-    public Contacts(String firstName, String lastName, String address, String city, String state, long zipCode, long phoneNumber, String email) {
+    public Contact(String firstName, String lastName, String address, String city, String state, long zipCode, long phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -96,7 +104,7 @@ public class Contacts {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Contacts contacts = (Contacts) o;
+        Contact contacts = (Contact) o;
         return zipCode == contacts.zipCode && phoneNumber == contacts.phoneNumber && Objects.equals(firstName, contacts.firstName) && Objects.equals(lastName, contacts.lastName) && Objects.equals(address, contacts.address) && Objects.equals(city, contacts.city) && Objects.equals(state, contacts.state) && Objects.equals(email, contacts.email);
     }
 
