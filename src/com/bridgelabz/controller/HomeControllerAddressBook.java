@@ -1,5 +1,6 @@
 package com.bridgelabz.controller;
 
+import com.bridgelabz.fileio.AddressBookFileIO;
 import com.bridgelabz.model.Contact;
 import com.bridgelabz.service.AddressBook;
 import com.bridgelabz.serviceimpl.AddressBookImpl;
@@ -15,12 +16,12 @@ import java.util.*;
  *
  **********************************************************************/
 public class HomeControllerAddressBook {
-
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program.");
         AddressBook addressBook = new AddressBookImpl();
         Contact contact = new Contact();
         List<Contact> contactList = new ArrayList<>();
+        AddressBookFileIO bookFileIO = new AddressBookFileIO();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -31,7 +32,9 @@ public class HomeControllerAddressBook {
                 System.out.println("5. Search Contact Details by Name");
                 System.out.println("6. Search Contact Details by City");
                 System.out.println("7. Search Contact Details by State");
-                System.out.println("8. Enter to Exit from Address Book Program.");
+                System.out.println("8. Write Data in the File Using File IO.");
+                System.out.println("9. Read Data From the File Using File IO.");
+                System.out.println("10. Enter to Exit from Address Book Program.");
                 int ch = scanner.nextInt();
 
                 switch (ch) {
@@ -90,7 +93,7 @@ public class HomeControllerAddressBook {
                         break;
                     case 6:
                         System.out.println("Enter City Name:");
-                         String cityName = scanner.next();
+                        String cityName = scanner.next();
                         System.out.println("=========================================================== Contact List " +
                                 " ======================================================");
                         contactList = addressBook.searchByCity(cityName);
@@ -114,6 +117,22 @@ public class HomeControllerAddressBook {
                         break;
 
                     case 8:
+                        System.out.println("======================================================================");
+                        System.out.println("Stored Objects In Contacts.txt File");
+                        System.out.println("======================================================================");
+                        bookFileIO.writeData(contactList);
+                        break;
+                    case 9:
+                            contactList = bookFileIO.readData();
+                        System.out.println("=================================== Getting Data From Contacts.txt File " +
+                                " =====================================");
+                        for (Contact contacts : contactList) {
+                            System.out.println(contacts);
+                        }
+                        System.out.println("===========================================================" +
+                                "======================================================");
+                        break;
+                    case 10:
                         System.out.println("You are exit from Address Book Program!!!");
                         System.exit(0);
                     default:
@@ -122,6 +141,7 @@ public class HomeControllerAddressBook {
                 }
             } catch (Exception e) {
                 System.out.println("Plz Enter Valid Input");
+                e.printStackTrace();
             }
         }
 

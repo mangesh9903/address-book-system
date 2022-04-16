@@ -1,5 +1,6 @@
 package com.bridgelabz.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /*********************************************************************
@@ -10,7 +11,7 @@ import java.util.Objects;
  * @since 05-03-2022
  *
  **********************************************************************/
-public class Contact {
+public class Contact implements Serializable {
 
     private String firstName;
     private String lastName;
