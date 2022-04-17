@@ -1,12 +1,12 @@
 package com.bridgelabz.controller;
 
 import com.bridgelabz.fileio.AddressBookFileIO;
+import com.bridgelabz.json.AddressBookUsingJson;
 import com.bridgelabz.model.Contact;
 import com.bridgelabz.opencsv.AddressBookOpenCSV;
 import com.bridgelabz.service.AddressBook;
 import com.bridgelabz.serviceimpl.AddressBookImpl;
 
-import java.io.*;
 import java.util.*;
 
 /*********************************************************************
@@ -39,7 +39,9 @@ public class HomeControllerAddressBook {
                 System.out.println("9. Read Data From the File Using File IO.");
                 System.out.println("10. Write Data in the CSV File Using OpenCSV.");
                 System.out.println("11. Read Data From the CSV File Using OpenCSV.");
-                System.out.println("12. Enter to Exit from Address Book Program.");
+                System.out.println("12. Write Data in the Json File Using Gson Lib.");
+                System.out.println("13. Read Data From the Json File Using Gson Lib.");
+                System.out.println("14. Enter to Exit from Address Book Program.");
                 int ch = scanner.nextInt();
 
                 switch (ch) {
@@ -151,6 +153,19 @@ public class HomeControllerAddressBook {
                                 "======================================================");
                         break;
                     case 12:
+                        System.out.println("======================================================================");
+                        System.out.println("Stored Data In Contacts File");
+                        System.out.println("======================================================================");
+                        AddressBookUsingJson.writeDataToJson(contactList);
+                        break;
+                    case 13:
+                        System.out.println("===================================  " +
+                                " Getting data From Json File =====================================");
+                          AddressBookUsingJson.readDataFromJsonFile();
+                        System.out.println("===========================================================" +
+                                "======================================================");
+                        break;
+                    case 14:
                         System.out.println("You are exit from Address Book Program!!!");
                         System.exit(0);
                     default:
