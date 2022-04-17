@@ -2,6 +2,7 @@ package com.bridgelabz.controller;
 
 import com.bridgelabz.fileio.AddressBookFileIO;
 import com.bridgelabz.model.Contact;
+import com.bridgelabz.opencsv.AddressBookOpenCSV;
 import com.bridgelabz.service.AddressBook;
 import com.bridgelabz.serviceimpl.AddressBookImpl;
 
@@ -22,6 +23,7 @@ public class HomeControllerAddressBook {
         Contact contact = new Contact();
         List<Contact> contactList = new ArrayList<>();
         AddressBookFileIO bookFileIO = new AddressBookFileIO();
+        AddressBookOpenCSV addressBookOpenCSV = new AddressBookOpenCSV();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -34,7 +36,9 @@ public class HomeControllerAddressBook {
                 System.out.println("7. Search Contact Details by State");
                 System.out.println("8. Write Data in the File Using File IO.");
                 System.out.println("9. Read Data From the File Using File IO.");
-                System.out.println("10. Enter to Exit from Address Book Program.");
+                System.out.println("10. Write Data in the CSV File Using OpenCSV.");
+                System.out.println("11. Read Data From the CSV File Using OpenCSV.");
+                System.out.println("12. Enter to Exit from Address Book Program.");
                 int ch = scanner.nextInt();
 
                 switch (ch) {
@@ -123,7 +127,7 @@ public class HomeControllerAddressBook {
                         bookFileIO.writeData(contactList);
                         break;
                     case 9:
-                            contactList = bookFileIO.readData();
+                        contactList = bookFileIO.readData();
                         System.out.println("=================================== Getting Data From Contacts.txt File " +
                                 " =====================================");
                         for (Contact contacts : contactList) {
@@ -133,6 +137,19 @@ public class HomeControllerAddressBook {
                                 "======================================================");
                         break;
                     case 10:
+                        System.out.println("======================================================================");
+                        System.out.println("Stored Data In Contacts.csv File");
+                        System.out.println("======================================================================");
+                        addressBookOpenCSV.writeDataToCSV(contactList);
+                        break;
+                    case 11:
+                        System.out.println("===================================  " +
+                                " =====================================");
+                        addressBookOpenCSV.readDataFromCSV();
+                        System.out.println("===========================================================" +
+                                "======================================================");
+                        break;
+                    case 12:
                         System.out.println("You are exit from Address Book Program!!!");
                         System.exit(0);
                     default:
