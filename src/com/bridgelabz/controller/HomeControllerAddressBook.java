@@ -6,6 +6,7 @@ import com.bridgelabz.opencsv.AddressBookOpenCSV;
 import com.bridgelabz.service.AddressBook;
 import com.bridgelabz.serviceimpl.AddressBookImpl;
 
+import java.io.*;
 import java.util.*;
 
 /*********************************************************************
@@ -122,13 +123,13 @@ public class HomeControllerAddressBook {
 
                     case 8:
                         System.out.println("======================================================================");
-                        System.out.println("Stored Objects In Contacts.txt File");
+                        System.out.println("Stored Objects In Contact.txt File");
                         System.out.println("======================================================================");
                         bookFileIO.writeData(contactList);
                         break;
                     case 9:
                         contactList = bookFileIO.readData();
-                        System.out.println("=================================== Getting Data From Contacts.txt File " +
+                        System.out.println("=================================== Getting Data From Contact.txt File " +
                                 " =====================================");
                         for (Contact contacts : contactList) {
                             System.out.println(contacts);
